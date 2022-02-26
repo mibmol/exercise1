@@ -29,7 +29,7 @@ const ResultItem: FC<{ result: Result }> = ({ result }) => {
 	return (
 		<li className="flex-row-between">
 			{result.hasError ? (
-				<p className="mr-2 my-0" style={{ color: '#EF4444' }}>
+				<p className="mr-2 my-0" style={{ color: '#E11D48' }}>
 					{result.errorMsg} at Line {result.lineNumber}
 				</p>
 			) : (

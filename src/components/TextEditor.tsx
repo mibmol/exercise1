@@ -8,16 +8,18 @@ type TextEditorProps = {
 };
 export const TextEditor: FC<TextEditorProps> = ({ dispatch }) => {
 	const inputRef = useRef(null);
+
 	useEffect(() => {
 		calculate();
 	}, []);
+
 	function calculate() {
-		let inputElement = inputRef.current as any;
 		dispatch({
 			type: CalcActions.calculateResults,
-			value: inputElement.innerHTML ?? '',
+			value: (inputRef.current as any).innerHTML ?? '',
 		});
 	}
+
 	return (
 		<div ref={inputRef} onInput={calculate} className="editor" contentEditable>
 			<div>
@@ -41,9 +43,11 @@ export const LineCounter: FC<LineCounterProps> = ({ results }) => {
 					<span>{1}</span>
 				</li>
 			)}
-			{results.map(({ hasError }, index) => (
-				<li key={index}>
-					<div>{hasError ? <span className="error-badge"></span> : <></>}</div>
+			{results.map(({ hasError, isEmptyLine }, index) => (
+				<li className="flex-row" key={index}>
+					<div className="flex-row-center">
+						{hasError && !isEmptyLine ? <div className="error-badge"></div> : <></>}
+					</div>
 					<span style={{ color: '#64748B' }}>{index + 1}</span>
 				</li>
 			))}

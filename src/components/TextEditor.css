@@ -27,7 +27,8 @@
 }
 
 .error-badge {
-	width: 16px;
-	height: 16px;
-	background-color: rgb(250, 85, 67);
+	width: 8px;
+	height: 8px;
+	border-radius: 100%;
+	background-color: #e11d48;
 }
