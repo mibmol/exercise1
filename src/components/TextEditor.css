@@ -1,0 +1,33 @@
+.editor {
+	width: 700px;
+	/* min-height: 400px; */
+	height: auto;
+	cursor: text;
+	text-align: left;
+	margin-left: 8px;
+	color: rgb(32, 32, 32);
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.counter {
+	min-width: 2em;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 4px;
+	list-style-type: none;
+	text-align: right;
+	background-color: #e2e8f0;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.counter li > div {
+	width: 20px;
+}
+
+.error-badge {
+	width: 16px;
+	height: 16px;
+	background-color: rgb(250, 85, 67);
+}

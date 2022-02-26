@@ -1,0 +1,45 @@
+.App {
+	text-align: center;
+	background-color: #ffffff;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.App-header {
+	font-size: calc(10px + 2vmin);
+	color: rgb(37, 42, 49);
+}
+.App-header h3 {
+	color: #334155;
+}
+
+.github-icon-link {
+	display: flex;
+	margin-left: 12px;
+}
+
+.github-icon {
+	color: #334155;
+	width: 1em;
+	height: 1em;
+}
+
+.github-icon:hover {
+	color: #475569;
+}
+
+main {
+	overflow-y: auto;
+}
+
+.editor-wrapper {
+	display: flex;
+	flex-direction: row;
+	overflow-y: auto;
+	height: 70vh;
+	background-color: #F1F5F9;
+	border: transparent 1px;
+	border-radius: 4px;
+}
