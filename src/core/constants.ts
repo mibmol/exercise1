@@ -8,7 +8,7 @@ import { TimeRange } from './types';
  *    ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00
  */
 export const DateRangeRegex =
-	/^(MO|TU|WE|TH|FR|SA|SU)(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])\-(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/;
+	/^(MO|TU|WE|TH|FR|SA|SU)(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])-(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/;
 
 /**
  * SalaryRates: reprents the rates to be applied to the worked hours, given the day and time ranges
