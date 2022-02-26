@@ -22,8 +22,8 @@ function isTimeWithinRange(innerTime: TimeRange, outerTime: TimeRange) {
 	let outerStartMinutes = outerTime.start.hour * 60 + outerTime.start.minute;
 	let outerEndMinutes = outerTime.end.hour * 60 + outerTime.end.minute;
 
-	innerEndMinutes = innerEndMinutes === 0 ? 24 * 60 : 0;
-	outerEndMinutes = outerEndMinutes === 0 ? 24 * 60 : 0;
+	innerEndMinutes = innerEndMinutes === 0 ? 23 * 60 : innerEndMinutes;
+	outerEndMinutes = outerEndMinutes === 0 ? 23 * 60 : outerEndMinutes;
 
 	return (
 		outerStartMinutes <= innerStartMinutes && innerEndMinutes <= outerEndMinutes
