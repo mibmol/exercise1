@@ -1,8 +1,19 @@
 import { TimeRange } from './types';
 
+
+/**
+ * Regex to check a valid pattern for a person work schedule.
+ * Valid expressions: 
+ * 		RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
+ *    ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00
+ */
 export const DateRangeRegex =
 	/^(MO|TU|WE|TH|FR|SA|SU)(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])\-(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/;
 
+/**
+ * SalaryRates: reprents the rates to be applied to the worked hours, given the day and time ranges
+ * From monday to friday (MO - FR) the rates are the same.
+ */
 export const SalaryRates: {
 	[day: string]: (TimeRange & { rate: number })[];
 } = {

@@ -3,6 +3,6 @@ export type Result = {
 	amount?: number;
 	hasError: boolean;
 	errorMsg?: string;
-	lineNumber?: number;
+	lineNumber: number;
 	isEmptyLine: boolean;
 };

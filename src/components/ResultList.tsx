@@ -4,7 +4,6 @@ import { Result } from './types';
 type ResultListProps = {
 	results: Result[];
 };
-
 export const ResultList: FC<ResultListProps> = ({ results }) => {
 	return (
 		<div
@@ -14,18 +13,31 @@ export const ResultList: FC<ResultListProps> = ({ results }) => {
 			}}
 		>
 			<h3 style={{ color: '#475569' }}>Results:</h3>
-			<ul style={{ width: '256px' }}>
+			<ul
+				style={{
+					width: '256px',
+					paddingRight: '4px',
+					overflow: 'auto',
+					height: '70vh',
+				}}
+			>
 				{results
 					.filter((r) => !r.isEmptyLine)
-					.map((r) => (
-						<ResultItem key={r.personName ?? '' + r.amount} result={r} />
+					.map((result) => (
+						<ResultItem
+							key={`${result.personName}${result.lineNumber}`}
+							result={result}
+						/>
 					))}
 			</ul>
 		</div>
 	);
 };
 
-const ResultItem: FC<{ result: Result }> = ({ result }) => {
+type ResultItemProps = {
+	result: Result;
+};
+export const ResultItem: FC<ResultItemProps> = ({ result }) => {
 	return (
 		<li className="flex-row-between">
 			{result.hasError ? (

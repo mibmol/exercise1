@@ -1,6 +1,6 @@
-const { validateFormat, parseScheduleObj } = require('../../core/parser');
-const { parsedScheduleSamples } = require('./mocks');
-const isEqual = require('lodash.isequal');
+import { parseScheduleObj, validateFormat } from 'core/parser';
+import { isDeepStrictEqual } from 'util';
+import { parsedScheduleSamples } from './mocks';
 
 describe('Test string format validation', () => {
 	const validSamples = [
@@ -37,7 +37,7 @@ describe('Test string format validation', () => {
 
 	test("It shouldn't accept any provided string", () => {
 		for (let sample of invalidSamples) {
-			expect(validateFormat(sample)).toBeFalsy();
+			expect(validateFormat(sample as any)).toBeFalsy();
 		}
 	});
 });
@@ -58,7 +58,7 @@ describe('Test Schedule parsing', () => {
 	test('It should parse all provided string correctly', () => {
 		for (let sample of parsingSamples) {
 			let parsingResult = parseScheduleObj(sample.string);
-			expect(isEqual(parsingResult, sample.result)).toBeTruthy();
+			expect(isDeepStrictEqual(parsingResult, sample.result)).toBeTruthy();
 		}
 	});
 });

@@ -1,4 +1,4 @@
-
+import { DateRangeRegex } from "core/constants";
 
 describe('Test DateRangeRegex', () => {
 	const validSamples = [

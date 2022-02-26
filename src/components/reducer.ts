@@ -31,7 +31,7 @@ export const calcReducer: Reducer<AppState, ActionType> = (
 	}
 };
 
-function transformResult(stringPattern: string, index: number): Result {
+export function transformResult(stringPattern: string, index: number): Result {
 	let isEmptyLine = stringPattern.trim() === '';
 	try {
 		let { personName, schedule } = parseScheduleObj(stringPattern.trim());
@@ -40,6 +40,7 @@ function transformResult(stringPattern: string, index: number): Result {
 			amount: getPaymentAmount(schedule),
 			hasError: false,
 			isEmptyLine,
+			lineNumber: index + 1,
 		};
 	} catch (error: any) {
 		return {

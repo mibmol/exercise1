@@ -1,7 +1,12 @@
 import { DateRangeRegex } from './constants';
 import { TimeObj, WorkSchedule } from './types';
 
-// RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00
+/**
+ * Creates a manageable object from a work schedule string.
+ * Throw a Error if the provided string do not pass the validation. See ./constants.ts
+ * @param {string} pattern A valid work schedule string that match the expression defined on DateRangeRegex
+ * @returns {{personName: string, schedule: WorkSchedule}} An object with the personName and a WorkSchedule object
+ */
 export function parseScheduleObj(pattern: string) {
 	if (!validateFormat(pattern)) {
 		throw Error('Invalid Format');
@@ -11,10 +16,10 @@ export function parseScheduleObj(pattern: string) {
 
 	for (const s of values.split(',')) {
 		const dayPrefix = s.substring(0, 2);
-		const [startTime, endTime] = s.substring(2).split('-');
+		const [startTimeString, endTimeString] = s.substring(2).split('-');
 		const times = {
-			start: parseTime(startTime),
-			end: parseTime(endTime),
+			start: parseTime(startTimeString),
+			end: parseTime(endTimeString),
 		};
 		if (compareTimes(times.start, times.end) >= 0) {
 			throw Error(
@@ -26,7 +31,12 @@ export function parseScheduleObj(pattern: string) {
 	return { personName, schedule };
 }
 
-function validateFormat(pattern: string) {
+/**
+ * Check for a valid string pattern. It uses the DateRangeRegex regex
+ * @param {string} pattern A string that represents a work schedule
+ * @returns {boolean} True if a valid pattern is provided, False otherwise
+ */
+export function validateFormat(pattern: string): boolean {
 	if (pattern == null || typeof pattern !== 'string') {
 		return false;
 	}
@@ -42,6 +52,11 @@ function validateFormat(pattern: string) {
 	return true;
 }
 
+/**
+ * Transform string with format HH:mm to an {hour, minute} object
+ * @param timeString
+ * @returns
+ */
 export function parseTime(timeString: string): TimeObj {
 	const [hour, minute] = timeString.split(':');
 	return {
@@ -50,9 +65,14 @@ export function parseTime(timeString: string): TimeObj {
 	};
 }
 
+/**
+ *
+ * @param {TimeObj} t1
+ * @param {TimeObj} t2
+ * @returns {number} Returns a positive number if t1 > t2, 0 if equal, and negative if t1 < t2
+ */
 function compareTimes(t1: TimeObj, t2: TimeObj) {
 	let minutesT1 = t1.hour * 60 + t1.minute;
 	let minutesT2 = t2.hour * 60 + t2.minute;
-	if (minutesT1 > minutesT2) return 1;
-	return minutesT1 === minutesT2 ? 0 : -1;
+	return minutesT1 - minutesT2;
 }
