@@ -15,6 +15,10 @@ function App() {
 	);
 }
 
+
+/**
+ * Dummy Header component
+ */
 function Header() {
 	return (
 		<header className="App-header flex-row-center">
@@ -31,6 +35,11 @@ function Header() {
 	);
 }
 
+/**
+ * Main component that hold the state and provide the 
+ * dispatcher to children components via useReducer
+ * Reducer logic can be found in components/reducer.ts
+ */
 function Main() {
 	const [state, dispatch] = useReducer(calcReducer, initialState);
 	return (
