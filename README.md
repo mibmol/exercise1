@@ -34,6 +34,10 @@ and make it easy to separate concerns, i.e. decoupling the UI from business or s
 
 All this always keeping in mind avoiding over-engineering the solution and modularizing as much as possible 
 
+Regarding the styling, raw css was used for high level components, and 
+for children or small components the style prop was used providing an object with the css rules
+
+
 
 
 

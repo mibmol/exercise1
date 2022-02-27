@@ -15,7 +15,6 @@ function App() {
 	);
 }
 
-
 /**
  * Dummy Header component
  */
@@ -36,7 +35,7 @@ function Header() {
 }
 
 /**
- * Main component that hold the state and provide the 
+ * Main component that hold the state and provide the
  * dispatcher to children components via useReducer
  * Reducer logic can be found in components/reducer.ts
  */
@@ -60,7 +59,7 @@ function Main() {
 
 function Footer() {
 	return (
-		<footer style={{}}>
+		<footer>
 			<p style={{ color: '#64748B' }}>
 				© {new Date().getFullYear()} Miguel Patiño San-yeng
 			</p>
